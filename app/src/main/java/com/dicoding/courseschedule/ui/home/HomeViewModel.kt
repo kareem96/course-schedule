@@ -19,7 +19,8 @@ class HomeViewModel(private val repository: DataRepository): ViewModel() {
     fun setQueryType(queryType: QueryType) {
         _queryType.value = queryType
     }
-    fun getNearestCourse(queryType: QueryType): LiveData<Course?> {
-        return repository.getNearestSchedule(queryType)
+
+    val getNearestCourse = Transformations.switchMap (_queryType){
+         repository.getNearestSchedule(it)
     }
 }

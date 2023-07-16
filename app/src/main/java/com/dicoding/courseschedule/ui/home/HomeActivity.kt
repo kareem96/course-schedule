@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
         val homeViewModelFactory = HomeViewModelFactory.createFactory(this)
         viewModel = ViewModelProvider(this, homeViewModelFactory)[HomeViewModel::class.java]
         supportActionBar?.title = getString(R.string.today_schedule)
-        viewModel.getNearestCourse(queryType).observe(this) { course ->
+        viewModel.getNearestCourse.observe(this) { course ->
             showTodaySchedule(course)
         }
     }
@@ -46,16 +46,13 @@ class HomeActivity : AppCompatActivity() {
             val remainingTime = timeDifference(day, startTime)
 
             val cardHome = findViewById<CardHomeView>(R.id.view_home)
-            cardHome.apply {
-                setCourseName(courseName)
-                setLecturer(lecturer)
-                setTime(time)
-                setRemainingTime(remainingTime)
-                setNote(note)
-            }
 
-            findViewById<TextView>(R.id.tv_empty_home).visibility =
-                if (course == null) View.VISIBLE else View.GONE
+            cardHome.setCourseName(course.courseName)
+            cardHome.setTime(time)
+            cardHome.setRemainingTime(remainingTime)
+            cardHome.setLecturer(course.lecturer)
+            cardHome.setNote(course.note)
+
         }
 
         findViewById<TextView>(R.id.tv_empty_home).visibility =

@@ -28,8 +28,6 @@ class CourseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             time.text = timeFormat
             lecturerCourse.text = lecturer
             titleCourse.text = courseName
-
-
         }
 
         itemView.setOnClickListener {

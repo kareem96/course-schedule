@@ -8,7 +8,6 @@ import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import com.dicoding.courseschedule.ui.add.AddActivity
 import com.dicoding.courseschedule.ui.home.HomeActivity
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
